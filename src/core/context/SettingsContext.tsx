@@ -47,3 +47,5 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     </SettingsContext.Provider>
   );
 };
+
+export const SettingsConsumer = SettingsContext.Consumer;

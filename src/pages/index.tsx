@@ -1,42 +1,101 @@
-import { CircularProgress, ThemeProvider, createTheme } from "@mui/material";
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { Suspense, useEffect } from "react";
-import WelcomePage from "./auth/welcome";
-import { paths } from "../routes/paths";
-import {
-  BACKGROUND_DARK,
-  PRIMARY_COLOR,
-  PRIMARY_LIGHT_COLOR,
-} from "../utils/colors";
+// MUI Imports
+import Grid from "@mui/material/Grid";
 
-const Home: NextPage = () => {
-  const router = useRouter();
-  const theme = createTheme({
-    palette: {
-      primary: {
-        light: PRIMARY_LIGHT_COLOR,
-        main: PRIMARY_COLOR,
-        dark: BACKGROUND_DARK,
-      },
-      secondary: {
-        light: "#ff7961",
-        main: "#f44336",
-        dark: "#ba000d",
-        contrastText: "#000",
-      },
-    },
-  });
+// Icons Imports
+import Poll from "mdi-material-ui/Poll";
+import CurrencyUsd from "mdi-material-ui/CurrencyUsd";
+import HelpCircleOutline from "mdi-material-ui/HelpCircleOutline";
+import BriefcaseVariantOutline from "mdi-material-ui/BriefcaseVariantOutline";
 
-  useEffect(() => {
-    router.push(`${paths.AUTH}/${paths.WELCOME}`);
-  });
+// Custom Components Imports
+import CardStatistics from "../components/CardStatistics";
 
+// Styled Component Import
+import ApexChartWrapper from "../core/styles/libs/react-apexcharts";
+
+// ** Demo Components Imports
+// import Table from "src/views/dashboard/Table";
+// import Trophy from "src/views/dashboard/Trophy";
+// import TotalEarning from "src/views/dashboard/TotalEarning";
+// import StatisticsCard from "src/views/dashboard/StatisticsCard";
+// import WeeklyOverview from "src/views/dashboard/WeeklyOverview";
+// import DepositWithdraw from "src/views/dashboard/DepositWithdraw";
+// import SalesByCountries from "src/views/dashboard/SalesByCountries";
+
+const Dashboard = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Suspense fallback={<CircularProgress />}></Suspense>
-    </ThemeProvider>
+    <ApexChartWrapper>
+      <Grid container spacing={6}>
+        {/* <Grid item xs={12} md={4}>
+          <Trophy />
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <StatisticsCard />
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
+          <WeeklyOverview />
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
+          <TotalEarning />
+        </Grid> */}
+        {/* <Grid item xs={12} md={6} lg={4}>
+          <Grid container spacing={6}>
+            <Grid item xs={6}>
+              <CardStatistics
+                stats="$25.6k"
+                icon={<Poll />}
+                color="success"
+                trendNumber="+42%"
+                title="Total Profit"
+                subtitle="Weekly Profit"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <CardStatistics
+                stats="$78"
+                title="Refunds"
+                trend="negative"
+                color="secondary"
+                trendNumber="-15%"
+                subtitle="Past Month"
+                icon={<CurrencyUsd />}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <CardStatistics
+                stats="862"
+                trend="negative"
+                trendNumber="-18%"
+                title="New Project"
+                subtitle="Yearly Project"
+                icon={<BriefcaseVariantOutline />}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <CardStatistics
+                stats="15"
+                color="warning"
+                trend="negative"
+                trendNumber="-18%"
+                subtitle="Last Week"
+                title="Sales Queries"
+                icon={<HelpCircleOutline />}
+              />
+            </Grid>
+          </Grid>
+        </Grid> */}
+        {/* <Grid item xs={12} md={6} lg={4}>
+          <SalesByCountries />
+        </Grid>
+        <Grid item xs={12} md={12} lg={8}>
+          <DepositWithdraw />
+        </Grid>
+        <Grid item xs={12}>
+          <Table />
+        </Grid> */}
+      </Grid>
+    </ApexChartWrapper>
   );
 };
 
-export default Home;
+export default Dashboard;

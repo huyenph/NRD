@@ -1,3 +1,5 @@
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material/SvgIcon/SvgIcon";
 import { ReactNode } from "react";
 import { Settings } from "../context/SettingsContext";
 
@@ -20,7 +22,7 @@ export type NavLink = {
   badgeContent?: string;
   externalLink?: boolean;
   openInNewTab?: boolean;
-  icon?: string | string[] | ReactNode;
+  icon?: string | string[] | ReactNode | any;
   badgeColor?:
     | "default"
     | "primary"
