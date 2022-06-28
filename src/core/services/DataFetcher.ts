@@ -1,8 +1,9 @@
-import axios from "axios";
-import env from "../config/env.json";
+import axios, { Method } from "axios";
+import env from "../../configs/env.json";
 
 export const dataFetcher = (
   url: string,
+  method: Method | string,
   data: object | null,
   isHeaderRequired: boolean = true,
   bearer: string | null,
@@ -21,7 +22,7 @@ export const dataFetcher = (
 
   return axios({
     url,
-    method: isMethodPatch ? "PATCH" : data ? "POST" : "GET",
+    method,
     ...(data && { data }),
     ...(isHeaderRequired && { headers: { ...headers } }),
     ...(isCancel && { cancelToken: source.token }),
