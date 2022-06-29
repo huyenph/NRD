@@ -17,6 +17,7 @@
     "@mui/material": "^5.8.5",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "mdi-material-ui": "^7.4.0",
     "moment": "^2.29.3",
     "next": "12.1.6",
@@ -29,6 +30,7 @@
     "sass": "^1.53.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/node": "18.0.0",
     "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.14",

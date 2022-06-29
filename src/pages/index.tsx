@@ -12,6 +12,8 @@ import CardStatistics from "../components/CardStatistics";
 
 // Styled Component Import
 import ApexChartWrapper from "../core/styles/libs/react-apexcharts";
+import axiosInstance from "../core/services/api-service/axios";
+import { onGet, onPost } from "../core/services/api-service";
 
 // ** Demo Components Imports
 // import Table from "src/views/dashboard/Table";
@@ -23,6 +25,7 @@ import ApexChartWrapper from "../core/styles/libs/react-apexcharts";
 // import SalesByCountries from "src/views/dashboard/SalesByCountries";
 
 const Dashboard = () => {
+  // onGet("info?site=stackoverflow");
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
