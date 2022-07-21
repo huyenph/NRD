@@ -21,7 +21,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     if (config.headers !== undefined) {
-      if (!isEmpty(getStorage("accessToken"))) {
+      if (isEmpty(getStorage("accessToken"))) {
         config.headers.Authorization = `Bearer ${getStorage("accessToken")}`;
       }
     }

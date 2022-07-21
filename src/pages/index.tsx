@@ -41,7 +41,7 @@ const Dashboard = () => {
         <Grid item xs={12} md={6} lg={4}>
           <TotalEarning />
         </Grid> */}
-        {/* <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <Grid container spacing={6}>
             <Grid item xs={6}>
               <CardStatistics
@@ -86,7 +86,7 @@ const Dashboard = () => {
               />
             </Grid>
           </Grid>
-        </Grid> */}
+        </Grid>
         {/* <Grid item xs={12} md={6} lg={4}>
           <SalesByCountries />
         </Grid>
