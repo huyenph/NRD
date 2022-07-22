@@ -31,7 +31,7 @@ import { createEmotionCache } from "../core/utils";
 import "react-perfect-scrollbar/dist/css/styles.css";
 
 // Global css styles
-import "../../styles/globals.css";
+import "../../styles/globals.scss";
 
 // Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {

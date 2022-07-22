@@ -36,6 +36,7 @@ const SwipeableDrawer = styled(MuiSwipeableDrawer)<SwipeableDrawerProps>({
     overflowX: "hidden",
     transition: "width .25s ease-in-out, box-shadow .25s ease-in-out",
   },
+  pointerEvents: "none",
 });
 
 const Drawer = (props: Props) => {

@@ -9,9 +9,11 @@ const nextConfig = {
 module.exports = {
   trailingSlash: true,
   reactStrictMode: true,
-  experimental: {
-    esmExternals: false,
-    jsconfigPaths: true // enables it for both jsconfig.json and tsconfig.json
+  complier: {
+    styledComponents: true | {
+      displayName: true,
+      ssr: true,
+    },
   },
   webpack: config => {
     config.resolve.alias = {
