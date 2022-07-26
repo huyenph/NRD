@@ -16,6 +16,8 @@ const LinkStyled = styled("a")(({ theme }) => ({
 
 const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(
   ({ theme }) => ({
+    marginTop: theme.spacing(1.5),
+    marginBottom: theme.spacing(4),
     "& .MuiFormControlLabel-label": {
       fontSize: "0.875rem",
       color: theme.palette.text.secondary,
