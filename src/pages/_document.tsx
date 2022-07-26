@@ -9,6 +9,7 @@ import createEmotionServer from "@emotion/server/create-instance";
 
 // Utils Imports
 import { createEmotionCache } from "../core/utils";
+import { ServerStyleSheet } from "styled-components";
 
 class CustomDocument extends Document {
   render() {
@@ -38,6 +39,7 @@ class CustomDocument extends Document {
 }
 
 CustomDocument.getInitialProps = async (ctx) => {
+  const sheet = new ServerStyleSheet();
   const originalRenderPage = ctx.renderPage;
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
@@ -45,7 +47,7 @@ CustomDocument.getInitialProps = async (ctx) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) =>
-        (
+        sheet.collectStyles(
           <App
             {...props} // @ts-ignore
             emotionCache={cache}
@@ -67,7 +69,11 @@ CustomDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-    styles: [...Children.toArray(initialProps.styles), ...emotionStyleTags],
+    styles: [
+      ...Children.toArray(initialProps.styles),
+      ...emotionStyleTags,
+      sheet.getStyleElement(),
+    ],
   };
 };
 

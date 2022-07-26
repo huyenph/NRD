@@ -22,6 +22,7 @@ import typography from "./typography";
 
 // Theme
 import themeOptions from "./ThemeOptions";
+// import { ThemeProvider } from "styled-components";
 
 // Global Styles
 import GlobalStyling from "./GlobalStyles";

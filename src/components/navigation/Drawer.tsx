@@ -9,6 +9,7 @@ import MuiSwipeableDrawer, {
 
 // Type Import
 import { Settings } from "../../core/context/SettingsContext";
+// import styled from "styled-components";
 
 interface Props {
   hidden: boolean;
@@ -73,6 +74,7 @@ const Drawer = (props: Props) => {
         "& .MuiDrawer-paper": {
           borderRight: 0,
           backgroundColor: theme.palette.background.default,
+          pointerEvents: "none",
         },
       }}
     >
