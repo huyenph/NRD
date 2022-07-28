@@ -4,25 +4,17 @@ const PasswordValidatorPattern = (passwordStr: string | number | undefined) => {
   const MIN_OPTIONAL_VALIDITY_COUNT = 2;
 
   // check string — valid length of 12
-  const validMinLength = string().min(12).isValidSync(passwordStr);
+  const validMinLength = string().trim().min(12).isValidSync(passwordStr);
 
   const validationPatterns = {
     // check string — upper case text
-    validUpperCaseChar: string()
-      .matches(/^(?=.*[A-Z])/)
-      .isValidSync(passwordStr),
+    validUpperCaseChar: string().matches(/[A-Z]/).isValidSync(passwordStr),
     // check string — lower case text
-    validLowerCaseChar: string()
-      .matches(/^(?=.*[a-z])/)
-      .isValidSync(passwordStr),
+    validLowerCaseChar: string().matches(/[a-z]/).isValidSync(passwordStr),
     // check string — contains at least 1 digit
-    validDigit: string()
-      .matches(/^(?=.*[0-9])/)
-      .isValidSync(passwordStr),
+    validDigit: string().matches(/(\d)/).isValidSync(passwordStr),
     // check string — contains at least 1 special character
-    validSpecialChar: string()
-      .matches(/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/)
-      .isValidSync(passwordStr),
+    validSpecialChar: string().matches(/(\W)/).isValidSync(passwordStr),
   };
 
   const hasMetMinOptionalCriteria = (): boolean => {

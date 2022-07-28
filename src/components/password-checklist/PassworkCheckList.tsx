@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import PasswordValidatorPattern from "./PasswordValidatorPattern";
+import { Clear, Done } from "@mui/icons-material";
 
 // Styles Imports
 import {
@@ -15,11 +16,6 @@ type PasswordValidatorProps = {
 const PasswordCheckList: React.FC<PasswordValidatorProps> = ({
   passwordStr,
 }) => {
-  const colorScheme = {
-    valid: "#4CAF50",
-    invalid: "#B71C1C",
-  };
-
   const [validation, setValidation] = useState({
     validUpperCaseChar: false,
     validLowerCaseChar: false,
@@ -42,73 +38,51 @@ const PasswordCheckList: React.FC<PasswordValidatorProps> = ({
     inputIsNotEmpty,
   } = validation;
 
+  const renderCondition = (validateChecked: boolean, title: string) => {
+    return (
+      <Grid container direction="row" spacing={1}>
+        <Grid item>
+          {validateChecked ? (
+            <Done fontSize="small" color="success" />
+          ) : (
+            <Clear fontSize="small" color="error" />
+          )}
+        </Grid>
+        <Grid item>
+          <Typography
+            component="p"
+            fontSize={13}
+            color={validateChecked ? "success.main" : "error.main"}
+          >
+            {title}
+          </Typography>
+        </Grid>
+      </Grid>
+    );
+  };
+
   return inputIsNotEmpty ? (
     <ValidatorMainWrapper>
       <Typography
-        component="h2"
+        component="p"
+        fontSize={14}
         sx={{
           fontWeight: 500,
+          // marginBottom: 2,
+          // marginTop: 2,
         }}
       >
-        Password should contain the following:
+        Password must contain the following:
       </Typography>
-
       <ValidatorContentWrapper>
-        <Typography
-          component="p"
-          sx={{
-            color: validMinLength ? colorScheme.valid : colorScheme.invalid,
-          }}
-        >
-          Minimum 12 characters
-        </Typography>
-
-        <Typography
-          component="h2"
-          sx={{
-            fontWeight: 500,
-          }}
-        >
-          To fulfill at least 2 of the following 4:
-        </Typography>
-        <ValidatorContentWrapper>
-          <Typography
-            component="p"
-            sx={{
-              color: validUpperCaseChar
-                ? colorScheme.valid
-                : colorScheme.invalid,
-            }}
-          >
-            One uppercase character
-          </Typography>
-          <Typography
-            component="p"
-            sx={{
-              color: validLowerCaseChar
-                ? colorScheme.valid
-                : colorScheme.invalid,
-            }}
-          >
-            One lowercase character
-          </Typography>
-          <Typography
-            component="p"
-            sx={{
-              color: validDigit ? colorScheme.valid : colorScheme.invalid,
-            }}
-          >
-            At least one digit
-          </Typography>
-          <Typography
-            component="p"
-            sx={{
-              color: validSpecialChar ? colorScheme.valid : colorScheme.invalid,
-            }}
-          >
-            At least one special character(!@#$%^)
-          </Typography>
-        </ValidatorContentWrapper>
+        {renderCondition(validMinLength, "Minimum 12 characters")}
+        {renderCondition(validUpperCaseChar, "One uppercase character")}
+        {renderCondition(validLowerCaseChar, "One lowercase character")}
+        {renderCondition(validDigit, "At least one digit")}
+        {renderCondition(
+          validSpecialChar,
+          "At least one special character(!@#$%^)"
+        )}
       </ValidatorContentWrapper>
     </ValidatorMainWrapper>
   ) : null;

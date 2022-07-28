@@ -210,8 +210,12 @@ const RegisterPage = () => {
                 .max(255)
                 .required("Email is required"),
               password: Yup.string()
-                .min(12, "Must be at least 12 characters")
+                .min(12)
                 .max(255)
+                .matches(/[A-Z]/)
+                .matches(/[a-z]/, "")
+                .matches(/(\d)/, "")
+                .matches(/(\W)/, "")
                 .required("Password is required"),
             })}
             onSubmit={(values, { setSubmitting }) => {
@@ -310,6 +314,10 @@ const RegisterPage = () => {
                   variant="contained"
                   sx={{ marginBottom: 7 }}
                   onClick={() => handleSubmit}
+                  disabled={
+                    Array.isArray(errors) ||
+                    Object.values(errors).toString() != ""
+                  }
                 >
                   Sign up
                 </Button>
