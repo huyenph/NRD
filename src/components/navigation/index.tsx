@@ -4,7 +4,7 @@ import { ReactNode, useRef, useState } from "react";
 // MUI Import
 import List from "@mui/material/List";
 import Box, { BoxProps } from "@mui/material/Box";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 // Third Party Components
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -20,7 +20,7 @@ import VerticalNavHeader from "./VerticalNavHeader";
 
 // Util Import
 import { hexToRGBA } from "../../core/utils";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 interface Props {
   hidden: boolean;
