@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent, MouseEvent, ReactNode, useState } from "react";
+import { MouseEvent, ReactNode, useState } from "react";
 
 // ** Next Imports
 import Link from "next/link";
@@ -279,9 +279,14 @@ const LoginPage = () => {
                 <Button
                   fullWidth
                   size="large"
+                  type="submit"
                   variant="contained"
                   sx={{ marginBottom: 7 }}
-                  onClick={() => router.push("/")}
+                  onClick={() => handleSubmit}
+                  disabled={
+                    Array.isArray(errors) ||
+                    Object.values(errors).toString() != ""
+                  }
                 >
                   Login
                 </Button>
