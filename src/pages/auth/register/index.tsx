@@ -46,6 +46,7 @@ import { Card, LinkStyled, FormControlLabel } from "./Register.style";
 // ** Third party Imports
 import { Formik } from "formik";
 import * as Yup from "yup";
+import PasswordCheckList from "../../../components/password-checklist/PassworkCheckList";
 
 interface ToggleState {
   showPassword: boolean;
@@ -284,6 +285,7 @@ const RegisterPage = () => {
                     ),
                   }}
                 />
+                <PasswordCheckList passwordStr={values.password} />
                 <FormControlLabel
                   control={<Checkbox />}
                   label={
