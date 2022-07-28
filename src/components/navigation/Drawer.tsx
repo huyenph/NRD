@@ -74,7 +74,6 @@ const Drawer = (props: Props) => {
         "& .MuiDrawer-paper": {
           borderRight: 0,
           backgroundColor: theme.palette.background.default,
-          pointerEvents: "none",
         },
       }}
     >
