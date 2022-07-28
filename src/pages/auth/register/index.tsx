@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, Fragment, ChangeEvent, MouseEvent, ReactNode } from "react";
+import { useState, Fragment, MouseEvent, ReactNode } from "react";
 
 // ** Next Imports
 import Link from "next/link";
@@ -11,17 +11,10 @@ import Divider from "@mui/material/Divider";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 import CardContent from "@mui/material/CardContent";
-import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import { styled, useTheme } from "@mui/material/styles";
-import MuiCard, { CardProps } from "@mui/material/Card";
+import { useTheme } from "@mui/material/styles";
 import InputAdornment from "@mui/material/InputAdornment";
-import MuiFormControlLabel, {
-  FormControlLabelProps,
-} from "@mui/material/FormControlLabel";
 
 // ** Icons Imports
 import Google from "mdi-material-ui/Google";
@@ -36,6 +29,7 @@ import themeConfig from "../../../configs/ThemeConfig";
 
 // ** Layout Import
 import BlankLayout from "../../../core/layouts/BlankLayout";
+import PasswordCheckList from "../../../components/password-checklist/PassworkCheckList";
 
 // ** Demo Imports
 // import FooterIllustrationsV1 from "src/views/pages/auth/FooterIllustration";
@@ -46,7 +40,6 @@ import { Card, LinkStyled, FormControlLabel } from "./Register.style";
 // ** Third party Imports
 import { Formik } from "formik";
 import * as Yup from "yup";
-import PasswordCheckList from "../../../components/password-checklist/PassworkCheckList";
 
 interface ToggleState {
   showPassword: boolean;
@@ -60,11 +53,6 @@ interface RegisterState {
 }
 
 const RegisterPage = () => {
-  // ** States
-  // const [values, setValues] = useState<State>({
-  //   password: "",
-  //   showPassword: false,
-  // });
   const [initialValues, setInitialValues] = useState<RegisterState>({
     username: "",
     email: "",
@@ -77,11 +65,6 @@ const RegisterPage = () => {
 
   // ** Hook
   const theme = useTheme();
-
-  // const handleChange =
-  //   (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
-  //     setValues({ ...values, [prop]: event.target.value });
-  //   };
 
   const handleClickShowPassword = () => {
     setToggle({
@@ -291,7 +274,13 @@ const RegisterPage = () => {
                 />
                 <PasswordCheckList passwordStr={values.password} />
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={
+                    <Checkbox
+                      onChange={(_, value) => {
+                        handleClickAgreePolicy(value);
+                      }}
+                    />
+                  }
                   label={
                     <Fragment>
                       <span>I agree to </span>
