@@ -110,6 +110,7 @@ const WeeklyOverview = () => {
       >
         <ReactApexcharts
           type="bar"
+          width="100%"
           height={205}
           options={options}
           series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]}

@@ -35,9 +35,9 @@ const Dashboard = () => {
         <Grid item xs={12} md={8}>
           <StatisticsCard />
         </Grid>
-        {/* <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <WeeklyOverview />
-        </Grid> */}
+        </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <TotalEarning />
         </Grid>
