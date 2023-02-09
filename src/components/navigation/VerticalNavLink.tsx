@@ -2,7 +2,7 @@
 import { ElementType, ReactNode } from "react";
 
 // Next Imports
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 
 // MUI Imports
@@ -37,6 +37,10 @@ interface Props {
 }
 
 // ** Styled Components
+const MenuLink = styled(Link)<LinkProps>({
+  width: "100%",
+});
+
 const MenuNavLink = styled(ListItemButton)<
   ListItemButtonProps & {
     component?: ElementType;
@@ -82,15 +86,13 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
   };
 
   return (
-    <ListItem
-      disablePadding
+    <ListItemButton
       className="nav-link"
       disabled={item.disabled || false}
       sx={{ mt: 1.5, px: "0 !important" }}
     >
-      <Link passHref href={item.path === undefined ? "/" : `${item.path}`}>
+      <MenuLink passHref href={item.path === undefined ? "/" : `${item.path}`}>
         <MenuNavLink
-          component={"a"}
           className={isNavLinkActive() ? "active" : ""}
           {...(item.openInNewTab ? { target: "_blank" } : null)}
           onClick={(e) => {
@@ -137,8 +139,8 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
             ) : null}
           </MenuItemTextMetaWrapper>
         </MenuNavLink>
-      </Link>
-    </ListItem>
+      </MenuLink>
+    </ListItemButton>
   );
 };
 
