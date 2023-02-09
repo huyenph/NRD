@@ -89,7 +89,11 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
     <ListItemButton
       className="nav-link"
       disabled={item.disabled || false}
-      sx={{ mt: 1.5, px: "0 !important" }}
+      sx={{
+        mt: 1.5,
+        px: "0 !important",
+        ":hover": { backgroundColor: "transparent" },
+      }}
     >
       <MenuLink passHref href={item.path === undefined ? "/" : `${item.path}`}>
         <MenuNavLink
