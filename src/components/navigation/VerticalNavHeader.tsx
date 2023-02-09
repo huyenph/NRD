@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 
 // Next Import
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
 // MUI Imports
 import Box, { BoxProps } from "@mui/material/Box";
@@ -24,6 +24,10 @@ interface Props {
 }
 
 // Styled Components
+const HeaderLink = styled(Link)<LinkProps>({
+  textDecoration: "none",
+});
+
 const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -59,7 +63,7 @@ const VerticalNavHeader = (props: Props) => {
       {userVerticalNavMenuBranding ? (
         userVerticalNavMenuBranding(props)
       ) : (
-        <Link href="/" passHref>
+        <HeaderLink href="/" passHref>
           <StyledLink>
             <svg
               width={30}
@@ -124,7 +128,7 @@ const VerticalNavHeader = (props: Props) => {
               {themeConfig.templateName}
             </HeaderTitle>
           </StyledLink>
-        </Link>
+        </HeaderLink>
       )}
     </MenuHeaderWrapper>
   );

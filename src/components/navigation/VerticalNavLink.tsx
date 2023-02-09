@@ -39,6 +39,7 @@ interface Props {
 // ** Styled Components
 const MenuLink = styled(Link)<LinkProps>({
   width: "100%",
+  textDecoration: "none",
 });
 
 const MenuNavLink = styled(ListItemButton)<
