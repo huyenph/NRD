@@ -90,6 +90,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
     <ListItemButton
       className="nav-link"
       disabled={item.disabled || false}
+      disableRipple
       sx={{
         mt: 1.5,
         px: "0 !important",
