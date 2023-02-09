@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders } from "axios";
+import axios, { AxiosRequestHeaders, AxiosResponse } from "axios";
 import { getStorage } from "../../utils";
 import isEmpty from "lodash";
 
@@ -34,8 +34,8 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    console.log("response");
+  (response: AxiosResponse<any, any>): AxiosResponse<any, any> => {
+    return response;
   },
   (error) => {
     console.log("error");
